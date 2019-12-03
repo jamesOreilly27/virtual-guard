@@ -4,12 +4,10 @@ import Dance from './components/Dance'
 
 const Main = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/dance' component={Dance} />
-      </Switch>
-    </Router>
-    )
+    <div>
+      Hello World!!
+    </div>
+  )
 }
 
 export default Main
