@@ -28,4 +28,7 @@ Community.addScope('community-home', {
   include: ['residents', 'tickets']
 })
 
+/*** Residents ***/
+Resident.addScope('resident-homepage', { include: ['guests'] })
+
 module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket }
