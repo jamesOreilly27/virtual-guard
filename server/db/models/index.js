@@ -31,4 +31,6 @@ Community.addScope('community-home', {
 /*** Residents ***/
 Resident.addScope('resident-homepage', { include: ['guests'] })
 
+ServiceTicket.addScope('ticket-queue', { include: [{ model: Community }]})
+
 module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket }
