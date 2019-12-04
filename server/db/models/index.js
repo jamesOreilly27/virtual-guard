@@ -23,7 +23,7 @@ ServiceTicket.belongsTo(Agent)
 Agent.hasMany(ServiceTicket, { as: 'tickets' })
 
 /*** Community to PropertyManager ***/
-PropertyManager.hasOne(Community)
+Community.hasOne(PropertyManager)
 
 
 /********** Scopes ***********/
