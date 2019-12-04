@@ -73,9 +73,9 @@ async function seed() {
   ])
 
   const agents = await Promise.all([
-    Agent.create({ firstName: 'James', lastName: 'OReilly', serviceCount: 0, isAdmin: true }),
-    Agent.create({ firstName: 'Roy', lastName: 'Papsedeiro', serviceCount: 0, isAdmin: true }),
-    Agent.create({ firstName: 'Alison', lastName: 'Papsedeiro', serviceCount: 0, isAdmin: false })
+    Agent.create({ firstName: 'James', lastName: 'OReilly', userName: 'joreilly', email: 'james.oreilly926@gmail.com', password: '123456', serviceCount: 0, isAdmin: true }),
+    Agent.create({ firstName: 'Roy', lastName: 'Papsedeiro', userName: 'roypaps', email: 'james.oreilly926@gmail.com', password: 'abcdef', serviceCount: 0, isAdmin: true }),
+    Agent.create({ firstName: 'Alison', lastName: 'Papsedeiro', userName: 'allpaps', email: 'james.oreilly926@gmail.com', password: 'abcdef', serviceCount: 0, isAdmin: false })
   ])
 
   const permanentGuests = await Promise.all([
