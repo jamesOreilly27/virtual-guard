@@ -3,6 +3,7 @@ const Agent = require('./agent')
 const PermanentGuest = require('./permanentGuest')
 const Community = require('./community')
 const ServiceTicket = require('./serviceTicket')
+const PropertyManager = require('./propertyManager')
 
 /********** Associations **********/
 
@@ -21,6 +22,9 @@ Community.hasMany(ServiceTicket, { as: 'tickets' })
 ServiceTicket.belongsTo(Agent)
 Agent.hasMany(ServiceTicket, { as: 'tickets' })
 
+/*** Community to PropertyManager ***/
+PropertyManager.hasOne(Community)
+
 
 /********** Scopes ***********/
 /*** Community ***/
@@ -33,4 +37,4 @@ Resident.addScope('resident-homepage', { include: ['guests'] })
 
 ServiceTicket.addScope('ticket-queue', { include: [{ model: Community }]})
 
-module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket }
+module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket, PropertyManager }
