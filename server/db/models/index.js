@@ -21,4 +21,11 @@ Community.hasMany(ServiceTicket, { as: 'tickets' })
 ServiceTicket.belongsTo(Agent)
 Agent.hasMany(ServiceTicket, { as: 'tickets' })
 
+
+/********** Scopes ***********/
+/*** Community ***/
+Community.addScope('community-home', {
+  include: ['residents', 'tickets']
+})
+
 module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket }
