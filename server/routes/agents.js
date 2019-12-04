@@ -1,17 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const Community = require('../db/models/community')
-
+const Agent = require('../db/models/agent')
 
 router.get('/', (req, res, next) => {
-  Community.scope('community-home').findAll()
-  .then(communities => res.json(communities))
+  Agent.findAll()
+  .then(agents => res.json(agents))
   .catch(err => console.log(err))
 })
 
 router.get('/:pk', (req, res, next) => {
-  Community.findByPk(req.params.pk)
-  .then(community => res.json(community))
+  Agent.findByPk(req.params.pk)
+  .then(agent => res.json(agent))
   .catch(err => console.log(err))
 })
 
