@@ -35,13 +35,12 @@ const createApp = () => {
 }
 
 const sync = () => {
-  console.log(chalk.green.bgWhite.bold('Sync Database'))
+  console.log(chalk.white.bgRed.bold('Sync Database'))
   return db.sync()
 }
 
 const startListening = () => {
-  console.log(chalk.bgWhite.red.bold(Object.keys(db)))
-  server.listen(PORT, () => console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`)))
+  server.listen(PORT, () => console.log(chalk.white.bgGreen.bold(`We are live on port ${server.address().port}`)))
 }
 
 if (require.main === module) {
