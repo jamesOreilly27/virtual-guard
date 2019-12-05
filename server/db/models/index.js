@@ -13,13 +13,13 @@ Community.hasMany(Resident, { as: 'residents' })
 Resident.belongsTo(Community)
 
 /*** Resident to PermanentGuests ***/
-Resident.hasMany(PermanentGuest, { as: 'permanent-guest'})
+Resident.hasMany(PermanentGuest, { as: 'guests'})
 PermanentGuest.belongsTo(Resident)
 
 Visit.belongsTo(PermanentGuest)
-PermanentGuest.hasMany(Visit, { as: 'visit' })
+PermanentGuest.hasMany(Visit, { as: 'visits' })
 
-Resident.hasMany(Visit, { as: 'visit' })
+Resident.hasMany(Visit, { as: 'visits' })
 Visit.belongsTo(Resident)
 
 /*** ServiceTickets ***/
@@ -34,14 +34,8 @@ Community.hasOne(PropertyManager)
 
 
 /********** Scopes ***********/
-/*** Community ***/
-Community.addScope('community-home', {
-  include: ['residents', 'tickets']
-})
-
-/*** Residents ***/
-Resident.addScope('resident-homepage', { include: ['guests'] })
-
+Community.addScope('community-home', { include: ['residents', PropertyManager] })
+Resident.addScope('resident-homepage', { include: ['guests', 'visits'] })
 ServiceTicket.addScope('ticket-queue', { include: [{ model: Community }]})
 
 module.exports = { Resident, Agent, PermanentGuest, Community, ServiceTicket, PropertyManager, Visit }
