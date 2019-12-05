@@ -1,5 +1,5 @@
 const db = require('../server/db')
-const { Agent, Community, PermanentGuest, Resident, ServiceTicket, PropertyManager } = require('../server/db/models')
+const { Agent, Community, PermanentGuest, Resident, ServiceTicket, PropertyManager, Visit } = require('../server/db/models')
 const chalk = require('chalk')
 
 const generateRandomNumber = () => Math.floor(Math.random() * 9)
@@ -88,6 +88,11 @@ async function seed() {
     PropertyManager.create({ userName: 'OrlandoSuitesManager', email: 'Manager@OS.com', password: '123', communityId: communities[2].id }),
     PropertyManager.create({ userName: 'GoldenBridgesManager', email: 'Manager@GB.com', password: '123', communityId: communities[3].id }),
     PropertyManager.create({ userName: 'WestmireEstatesManager', email: 'Manager@WE.com', password: '123', communityId: communities[4].id })
+  ])
+
+  const visits = await Promise.all([
+    Visit.create({ startWindow: new Date('December 3, 2019 06:00:00'), endWindow: new Date('December 3, 2019 07:00:00'), codeWasUsed: true, startTime: new Date('December 3, 2019 06:30:00'), endTime: new Date('December 3, 2019 08:30:00'), residentId: 35, permanentGuestId: 1 }),
+    Visit.create({ startWindow: new Date('December 5, 2019 06:00:00'), endWindow: new Date('December 5, 2019 07:00:00'), startTime: null, endTime: null, codeWasUsed: false, residentId: 35, permanentGuestId: 1 })
   ])
 }
 
