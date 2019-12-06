@@ -53,6 +53,7 @@ const createApp = () => {
   app.use(passport.session())
 
   app.use('/api', require('./routes'))
+  app.use('/auth', require('./auth'))
   
   app.use('/static', express.static(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))

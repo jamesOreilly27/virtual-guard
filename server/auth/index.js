@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const {Resident, PropertyManger, Agent} = require('../db/models')
+const {Resident, PropertyManager, Agent} = require('../db/models')
 
 const wrongLoginInfoMessage = 'Could Not Login. Either the username or password provided are incorrect'
 
 const findUserType = typeString => {
-  if(typestring = 'resident') return Resident
+  if(typeString = 'resident') return Resident
   if(typeString = 'agent') return Agent
   if(typeString = 'property-manager') return PropertyManager
 }
@@ -44,8 +44,9 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me', (req, res, next) => {
-  User.scope('bets-and-pools').findById(req.user.id)
+router.get('/me/:usertype', (req, res, next) => {
+  const userType = findUserType(req.params.usertype)
+  userType.findByPk(req.user.id)
   .then(user => res.json(user))
   .catch(next)
 })

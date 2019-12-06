@@ -14,7 +14,7 @@ const Resident = db.define('resident', {
 })
 
 Resident.prototype.correctPassword = function (candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt) === this.password
+  return Resident.encryptPassword(candidatePwd, this.salt) === this.password
 }
 
 Resident.generateSalt = function () {
