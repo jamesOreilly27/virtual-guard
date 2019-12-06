@@ -1,29 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  background-color: green;
-`
-const Button = styled.button`
-  width: 300px;
-  height: 150px;
-  background-color: red;
-  color: white;
-  border: none;
-`
+import { RowAllCenter, Button, Form, Label, Input } from '../styled-library'
 
 const Authform = ({ handleSubmit }) => {
   return (
-    <Wrapper>
+    <Form>
+      <Label>
+        Email
+        <Input
+          type="email"
+          name="email"
+          required
+        />
+      </Label>
+      <Label>
+        Password
+        <Input
+          type="text"
+          name="password"
+          required
+        />
+      </Label>
       <Button onClick={
         evt => {
           evt.preventDefault()
           handleSubmit('test35@email.com', '123')
-        }
-      }>
+        }}
+        backgroundColor='blue'
+        color='white'
+      >
         Login
       </Button>
-    </Wrapper>
+    </Form>
   )
 }
 
