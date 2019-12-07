@@ -1,34 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RowAllCenter, Button, Form, Label, Input } from '../styled-library'
+import { Button, Form, Label, Input } from '../styled-library'
 
 const Authform = ({ handleSubmit }) => {
   return (
-    <Form>
+    <Form onSubmit={
+      evt => {
+        evt.preventDefault()
+        handleSubmit(evt.target.email.value, evt.target.password.value)
+      }}
+    >
       <Label>
         Email
-        <Input
-          type="email"
-          name="email"
-          required
-        />
+        <Input type="email" name="email" required />
       </Label>
       <Label>
         Password
-        <Input
-          type="text"
-          name="password"
-          required
-        />
+        <Input type="text" name="password" required />
       </Label>
-      <Button onClick={
-        evt => {
-          evt.preventDefault()
-          handleSubmit('test35@email.com', '123')
-        }}
-        backgroundColor='blue'
-        color='white'
-      >
+      <Button backgroundColor='blue' color='white'>
         Login
       </Button>
     </Form>

@@ -28,7 +28,7 @@ const parseUsertype = (usertype) => {
 export const authLogin = (email, password, history, usertype) => dispatch => {
   return axios.post(`/auth/login/${usertype}`, { email, password })
   .then(res => {
-    console.log('FIRING', parseUsertype(usertype))
+    console.log('FIRING', parseUsertype(usertype)(res.data))
     dispatch(parseUsertype(usertype)(res.data))
     history.push('/homepage')
   })
@@ -44,6 +44,10 @@ export const fetchUserThunk = () => (dispatch, usertype) => {
 const reducer = (resident = {}, action) => {
   switch (action.type) {
     case GOT_RESIDENT:
+      return action.payload
+    case GOT_AGENT:
+      return action.payload
+    case GOT_PROPERTY_MANAGER:
       return action.payload
     default:
       return resident

@@ -15,7 +15,7 @@ const Agent = db.define('agent', {
 })
 
 Agent.prototype.correctPassword = function (candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt) === this.password
+  return Agent.encryptPassword(candidatePwd, this.salt) === this.password
 }
 
 Agent.generateSalt = function () {

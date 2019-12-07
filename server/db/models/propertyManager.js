@@ -10,7 +10,7 @@ const PropertyManager = db.define('property-manager', {
 })
 
 PropertyManager.prototype.correctPassword = function (candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt) === this.password
+  return PropertyManager.encryptPassword(candidatePwd, this.salt) === this.password
 }
 
 PropertyManager.generateSalt = function () {
