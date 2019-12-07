@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Dance from './components/Dance'
+import { Login } from './components'
 
 const Main = () => {
   return (
-    <div>
-      Hello World!!
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/Login/:usertype" component={Login} />
+      </Switch>
+    </Router>
   )
 }
 
