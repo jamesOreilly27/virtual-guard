@@ -31,8 +31,9 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/me/:usertype', (req, res, next) => {
+router.get('/me', (req, res, next) => {
   const userType = findUserType(req.params.usertype)
+  console.log(req.user)
   userType.findByPk(req.user.id)
   .then(user => res.json(user))
   .catch(next)

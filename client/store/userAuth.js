@@ -37,8 +37,9 @@ export const authLogin = (email, password, history, usertype) => dispatch => {
 
 export const fetchUserThunk = () => (dispatch, usertype) => {
   axios.get(`/auth/me/${usertype}`)
-  .then(res => dispatch(parseUsertype(usertype)(res.data)))
-  .catch(err => dispatch(parseUsertype(usertype)(err.message)))
+  .then(res => console.log('FIRING RES', res))
+  // .then(res => dispatch(parseUsertype(usertype)(res.data)))
+  // .catch(err => dispatch(parseUsertype(usertype)(err.message)))
 }
 
 const reducer = (resident = {}, action) => {
